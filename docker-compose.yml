@@ -1,0 +1,71 @@
+version: "3.8"
+
+services:
+  graphql_server:
+    build:
+      context: .
+      dockerfile: ./graphqlsrv/Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - ./graphqlsrv/src:/usr/src/app
+    working_dir: /usr/src/app
+    init: true
+    tty: true
+    depends_on:
+      - db
+    command: npx ts-node index.ts
+
+  front:
+    build:
+      context: .
+      dockerfile: ./front/Dockerfile
+    volumes:
+      - ./front:/usr/src/app/
+    working_dir: /usr/src/app/
+    ports:
+      - "5173:5173"
+      - "6006:6006"
+    init: true
+    tty: true
+
+  websrv:
+    build:
+      context: .
+      dockerfile: ./websrv/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      - vol_websrv:/var/www/html
+    working_dir: /var/www/html
+    init: true
+    tty: true
+
+  db:
+    build:
+      context: .
+      dockerfile: ./db/Dockerfile
+    ports:
+      - 5432:5432
+    volumes:
+      - vol_postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+    init: true
+    tty: true
+
+  pgadmin:
+    image: dpage/pgadmin4:6.11
+    container_name: container_pgadmin
+    ports:
+      - 8080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: exsample@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    depends_on:
+      - db
+
+volumes:
+  vol_websrv: # websrv用のボリューム
+  vol_postgresql: # PostgreSQLDBのボリューム

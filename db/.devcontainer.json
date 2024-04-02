@@ -1,0 +1,11 @@
+{
+  "name": "db",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "db",
+  "workspaceFolder": "/var/lib/postgresql/data",
+  "customizations": {
+    "vscode": {
+      "extensions": ["donjayamanne.githistory"]
+    }
+  }
+}

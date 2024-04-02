@@ -1,0 +1,11 @@
+{
+  "name": "web_srv_dev",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "websrv",
+  "workspaceFolder": "/var/www/html",
+  "customizations": {
+    "vscode": {
+      "extensions": ["donjayamanne.githistory"]
+    }
+  }
+}

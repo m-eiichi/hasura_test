@@ -1,0 +1,16 @@
+{
+  "name": "front",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "front",
+  "workspaceFolder": "/usr/src/app",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "donjayamanne.githistory",
+        "esbenp.prettier-vscode",
+        "stylelint.vscode-stylelint",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}
