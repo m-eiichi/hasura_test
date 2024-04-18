@@ -2,7 +2,7 @@
   "name": "front",
   "dockerComposeFile": ["../docker-compose.yml"],
   "service": "front",
-  "workspaceFolder": "/usr/src/app",
+  "workspaceFolder": "/usr/src/app/react_template/",
   "customizations": {
     "vscode": {
       "extensions": [
