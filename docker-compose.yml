@@ -6,7 +6,8 @@ services:
       context: .
       dockerfile: ./front/Dockerfile
     volumes:
-      - ./front:/usr/src/app/
+      - ./front/react_template:/usr/src/app/react_template
+      - ./websrv/html:/usr/src/app/react_template/dist
     working_dir: /usr/src/app/
     ports:
       - "5173:5173"
@@ -21,7 +22,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - vol_websrv:/var/www/html
+      - ./websrv/html:/var/www/html
     working_dir: /var/www/html
     init: true
     tty: true
