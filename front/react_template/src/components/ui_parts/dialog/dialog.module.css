@@ -1,0 +1,86 @@
+@import "../../../assets/styles/mq.css";
+
+.dialog {
+  padding: 0;
+  overflow-y: scroll;
+  background-color: var(--white);
+  border: none;
+  border-radius: var(--radius-m);
+
+  &.size_s {
+    width: calc(100% - var(--size-f-05) - var(--size-f-05));
+    max-height: calc(100vh - var(--size-f-05) - var(--size-f-05));
+  }
+
+  &.size_m {
+    width: calc(100% - var(--size-f-04) - var(--size-f-04));
+    max-height: calc(100vh - var(--size-f-04) - var(--size-f-04));
+  }
+
+  &.size_l {
+    width: calc(100% - var(--size-f-03) - var(--size-f-03));
+    max-height: calc(100vh - var(--size-f-03) - var(--size-f-03));
+  }
+
+  /* IE(Internet Explorer)・Microsoft Edgeへの対応 */
+  -ms-overflow-style: none;
+
+  /* Firefoxへの対応 */
+  scrollbar-width: none;
+
+  &::backdrop {
+    background: rgb(0 0 0 / 50%);
+    opacity: 1;
+  }
+
+  &.noOverlay::backdrop {
+    background: rgb(0 0 0 / 0%);
+  }
+
+  &.last_open_dialog:modal::backdrop {
+    opacity: 1;
+    animation: fadein 0.15s ease-in;
+  }
+
+  /* Google Chrome、Safariへの対応 */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.dialog_content {
+  padding: var(--size-f-02);
+}
+
+@media (--viewport-over-tablet) {
+  .dialog {
+    &.size_s {
+      width: min(calc(100% - 128px), 432px);
+      max-height: calc(100vh - var(--size-f-05) - var(--size-f-05));
+    }
+
+    &.size_m {
+      width: min(calc(100% - 80px), 640px);
+      max-height: calc(100vh - var(--size-f-04) - var(--size-f-04));
+    }
+
+    &.size_l {
+      width: min(calc(100% - 48px), 752px);
+      max-height: calc(100vh - var(--size-f-03) - var(--size-f-03));
+    }
+  }
+
+  .dialog_content {
+    padding: var(--size-f-04) var(--size-f-05);
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

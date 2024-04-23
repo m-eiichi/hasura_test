@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &.l {
+    gap: var(--size-f-01);
+  }
+
+  &.m {
+    gap: var(--base-size-4px);
+  }
+
+  &.s {
+    gap: var(--base-size-4px);
+  }
+}
+
+.radiobox_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-f-01) var(--size-f-05);
+  align-items: flex-start;
+  align-items: stretch;
+
+  &.vertical {
+    flex-direction: column;
+    gap: var(--size-f-01);
+  }
+}
+
+.tile_container {
+  gap: var(--size-f-02);
+}
+
+.no_tile_container {
+  gap: var(--size-f-05);
+}

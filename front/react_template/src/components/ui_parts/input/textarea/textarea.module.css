@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &.l {
+    gap: var(--size-f-01);
+  }
+
+  &.m {
+    gap: var(--base-size-4px);
+  }
+
+  &.s {
+    gap: var(--base-size-4px);
+  }
+}

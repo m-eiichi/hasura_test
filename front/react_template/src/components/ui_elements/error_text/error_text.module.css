@@ -1,0 +1,4 @@
+.text {
+  font: var(--supplement-l);
+  color: var(--color-alert-text);
+}

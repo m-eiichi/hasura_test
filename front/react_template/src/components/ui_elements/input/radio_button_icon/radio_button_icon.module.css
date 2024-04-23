@@ -1,0 +1,55 @@
+.input {
+  display: none;
+
+  & + .icon {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: #fff;
+    border: solid var(--color-border-field-bold);
+    border-radius: var(--radius-full);
+
+    &::after {
+      position: absolute;
+      top: calc(50% - 5px);
+      left: calc(50% - 5px);
+      display: block;
+      width: 10px;
+      height: 10px;
+      content: "";
+      background-color: var(--color-link-text);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    &.error {
+      border: solid var(--color-border-alert);
+    }
+
+    &.disabled {
+      cursor: none;
+      background-color: inherit;
+      border: solid var(--color-border-disabled-bold);
+    }
+  }
+
+  &:checked + .icon {
+    border: solid var(--color-border-selected);
+
+    &::after {
+      opacity: 1;
+    }
+
+    &.disabled {
+      cursor: none;
+      background-color: inherit;
+      border: solid var(--color-border-disabled-bold);
+
+      &::after {
+        background-color: var(--color-disabled-text);
+      }
+    }
+  }
+}

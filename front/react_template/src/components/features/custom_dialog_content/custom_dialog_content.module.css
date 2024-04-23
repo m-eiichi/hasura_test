@@ -1,0 +1,26 @@
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-01);
+}
+
+.form {
+  padding-top: var(--size-f-04);
+}
+
+.form__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-04);
+}
+
+.form__list__button {
+  display: flex;
+  gap: var(--size-f-04);
+}
+
+.form__list__checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-04);
+}
