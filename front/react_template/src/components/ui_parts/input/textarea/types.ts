@@ -11,6 +11,7 @@ export type TextAreaProps<T extends FieldValues> = {
   size?: "s" | "m" | "l";
   disabled?: boolean;
   errors?: FieldError | Merge<FieldError, FieldErrorsImpl<T>> | undefined;
+  noErrorAreaFixed?: boolean;
   label?: string;
   requirement?: boolean;
   supportText?: string;

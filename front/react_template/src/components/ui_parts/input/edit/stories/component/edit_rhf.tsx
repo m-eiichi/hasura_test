@@ -73,7 +73,7 @@ function createZodObj(zod_rule: string, props: EditRhfForSbProps) {
 /**
  * Editコンポーネント作成
  *
- * @property props : InputElementWrapperProps
+ * @param props : InputElementWrapperProps
  * @returns StoryBook用のラッパーコンポーネント
  */
 export const EditRhf = (props: EditRhfForSbProps): ReactElement => {

@@ -5,7 +5,7 @@
 }
 
 .inner {
-  width: min(100%, 1200px);
+  width: min(100%, 1280px);
   padding: var(--size-f-03);
   margin: 0 auto;
 }

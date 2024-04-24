@@ -5,4 +5,5 @@ export type EditProps<T extends FieldValues> = EditElementProps<T> & {
   label?: string;
   requirement?: boolean;
   supportText?: string;
+  noErrorAreaFixed?: boolean;
 };

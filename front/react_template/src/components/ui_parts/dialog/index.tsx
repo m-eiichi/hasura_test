@@ -2,9 +2,18 @@ import { useEffect, useRef, ReactElement, FC } from "react";
 import { DialogProps } from "./types";
 import Styles from "./dialog.module.css";
 
-export const Dialog: FC<DialogProps> = ({ noOverlay,  isOpen = "", children, size }: DialogProps): ReactElement | null => {
+export const Dialog: FC<DialogProps> = ({
+  noOverlay,
+  isOpen = false,
+  children,
+  size,
+}: DialogProps): ReactElement | null => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const dialog = [Styles.dialog, noOverlay === true ? Styles.noOverlay : "", size !== undefined ? Styles[`size_${size}`] : Styles.size_l];
+  const dialog = [
+    Styles.dialog,
+    noOverlay === true ? Styles.noOverlay : "",
+    size !== undefined ? Styles[`size_${size}`] : Styles.size_l,
+  ];
   useEffect((): void => {
     const currentDialog = dialogRef.current;
     const openDialogElements = document.querySelectorAll("dialog[open]");
@@ -20,7 +29,7 @@ export const Dialog: FC<DialogProps> = ({ noOverlay,  isOpen = "", children, siz
     }
 
     // stateが""でない場合（useDialogのopenが発動した時）
-    if (isOpen !== "") {
+    if (isOpen !== false) {
       if (currentDialog.hasAttribute("open")) {
         return;
       }
@@ -39,7 +48,9 @@ export const Dialog: FC<DialogProps> = ({ noOverlay,  isOpen = "", children, siz
       currentDialog.classList.remove(Styles["last_open_dialog"]);
       // openしている最後のdialogにクラスを付与
       if (openDialogElements.length > 0) {
-        openDialogElements[openDialogElements.length - 1].classList.add(Styles["last_open_dialog"]);
+        openDialogElements[openDialogElements.length - 1].classList.add(
+          Styles["last_open_dialog"],
+        );
       }
 
       currentDialog.close();

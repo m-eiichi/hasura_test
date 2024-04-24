@@ -19,6 +19,7 @@ export const EditElement = <T extends FieldValues>(
     defaultvalue,
     errors,
     placeholder,
+    numberSpin,
   } = props;
 
   const input = [
@@ -33,6 +34,7 @@ export const EditElement = <T extends FieldValues>(
     errors !== undefined ? Styles.error : "",
     fullWidth === true ? Styles.full_width : "",
     disabled === true ? Styles.disabled : "",
+    numberSpin === true ? "" : Styles.no_spin,
   ];
   const placeHolder = !disabled ? placeholder : "";
   return (

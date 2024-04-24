@@ -21,4 +21,7 @@ export type SelectElementProps<T extends FieldValues> = {
   options: OptionProps[];
   disabled?: boolean;
   defaultvalue?: string | number;
+  handleChange?:
+    | React.ChangeEventHandler<HTMLSelectElement>[]
+    | React.ChangeEventHandler<HTMLSelectElement>;
 };

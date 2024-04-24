@@ -5,16 +5,19 @@
   border-radius: var(--radius-m);
 
   &.l {
+    height: 56px;
     padding: 12px var(--size-f-02);
     border-radius: var(--radius-m);
   }
 
   &.m {
+    height: 40px;
     padding: var(--base-size-4px) var(--base-size-8px);
     border-radius: var(--radius-s);
   }
 
   &.s {
+    height: 32px;
     padding: 0 var(--base-size-8px);
     border-radius: var(--radius-s);
   }

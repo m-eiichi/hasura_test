@@ -9,6 +9,7 @@ export const useCustomForm = (schema: any, defaultValues: any) => {
     register,
     watch,
     control,
+    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<Schema>({
@@ -20,6 +21,7 @@ export const useCustomForm = (schema: any, defaultValues: any) => {
     register,
     watch,
     control,
+    setValue,
     handleSubmit,
     errors,
   };

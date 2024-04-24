@@ -21,6 +21,7 @@ export const Select = <T extends FieldValues>(
     options,
     register,
     errors,
+    noErrorAreaFixed,
     fullWidth,
     name,
     defaultvalue,
@@ -35,7 +36,12 @@ export const Select = <T extends FieldValues>(
     <div className={container.join(" ")}>
       {(label || supportText || requirement) && (
         <div>
-          <Label text={label} requirement={requirement} disabled={disabled} />
+          <Label
+            text={label}
+            requirement={requirement}
+            labelFor={id}
+            disabled={disabled}
+          />
           <SupportText disabled={disabled}>{supportText}</SupportText>
         </div>
       )}
@@ -50,7 +56,11 @@ export const Select = <T extends FieldValues>(
         defaultvalue={defaultvalue}
         fullWidth={fullWidth}
       />
-      {errors != null && <ErrorText>{errors?.message as string}</ErrorText>}
+      {noErrorAreaFixed !== true ? (
+        <ErrorText>{errors?.message as string}</ErrorText>
+      ) : (
+        errors != null && <ErrorText>{errors?.message as string}</ErrorText>
+      )}
     </div>
   );
 };

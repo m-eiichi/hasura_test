@@ -23,6 +23,8 @@ export const Edit = <T extends FieldValues>(
     disabled,
     defaultvalue,
     errors,
+    noErrorAreaFixed,
+    numberSpin,
     ...rest
   } = props;
 
@@ -35,7 +37,12 @@ export const Edit = <T extends FieldValues>(
     <div className={container.join(" ")}>
       {(label || supportText || requirement) && (
         <div>
-          <Label text={label} requirement={requirement} disabled={disabled} />
+          <Label
+            text={label}
+            requirement={requirement}
+            labelFor={id}
+            disabled={disabled}
+          />
           <SupportText disabled={disabled}>{supportText}</SupportText>
         </div>
       )}
@@ -50,8 +57,13 @@ export const Edit = <T extends FieldValues>(
         disabled={disabled}
         defaultvalue={defaultvalue}
         fullWidth={fullWidth}
+        numberSpin={numberSpin}
       />
-      {errors != null && <ErrorText>{errors?.message as string}</ErrorText>}
+      {noErrorAreaFixed !== true ? (
+        <ErrorText>{errors?.message as string}</ErrorText>
+      ) : (
+        errors != null && <ErrorText>{errors?.message as string}</ErrorText>
+      )}
     </div>
   );
 };

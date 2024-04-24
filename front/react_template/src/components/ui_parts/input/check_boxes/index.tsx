@@ -24,6 +24,7 @@ export const CheckBoxes = <T extends FieldValues>(
     vertical,
     disabled,
     errors,
+    noErrorAreaFixed,
   } = props;
 
   const container = [
@@ -66,7 +67,11 @@ export const CheckBoxes = <T extends FieldValues>(
             );
           })}
       </div>
-      {errors != null && <ErrorText>{errors?.message as string}</ErrorText>}
+      {noErrorAreaFixed !== true ? (
+        <ErrorText>{errors?.message as string}</ErrorText>
+      ) : (
+        errors != null && <ErrorText>{errors?.message as string}</ErrorText>
+      )}
     </div>
   );
 };

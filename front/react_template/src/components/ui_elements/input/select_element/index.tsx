@@ -17,6 +17,7 @@ export const SelectElement = <T extends FieldValues>(
     disabled,
     name,
     defaultvalue,
+    handleChange,
   } = props;
 
   const select = [
@@ -30,10 +31,23 @@ export const SelectElement = <T extends FieldValues>(
     <select
       className={select.join(" ")}
       id={id}
-      disabled={disabled}
       name={name}
+      disabled={disabled}
       defaultValue={defaultvalue}
       {...register}
+      onChange={(e) => {
+        // register
+        register?.onChange(e);
+
+        // props分
+        if (handleChange) {
+          if (typeof handleChange === "function") {
+            handleChange(e);
+          } else {
+            handleChange.forEach((change_event) => change_event(e));
+          }
+        }
+      }}
     >
       {options &&
         options.map((optinon: OptionProps) => {

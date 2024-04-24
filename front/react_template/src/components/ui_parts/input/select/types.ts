@@ -5,4 +5,5 @@ export type SelectProps<T extends FieldValues> = SelectElementProps<T> & {
   label?: string;
   requirement?: boolean;
   supportText?: string;
+  noErrorAreaFixed?: boolean;
 };

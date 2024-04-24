@@ -2,7 +2,7 @@ import { useCallback, useState, type ReactElement, type FC } from "react";
 
 import { Dialog as Component } from ".";
 
-type Props = Omit<Parameters<typeof Component>[0], "isOpen" | "dialogName">;
+type Props = Omit<Parameters<typeof Component>[0], "isOpen">;
 
 type Result = {
   open: VoidFunction;
@@ -10,22 +10,22 @@ type Result = {
   Dialog: FC<Props>;
 };
 
-export const useDialog = (dialogName: string): Result => {
-  const [isOpen, setOpen] = useState<string>("");
+export const useDialog = (): Result => {
+  const [isOpen, setOpen] = useState<boolean>();
 
   const open: VoidFunction = useCallback((): void => {
-    setOpen(dialogName);
-  }, [dialogName]);
+    setOpen(true);
+  }, []);
 
   const close: VoidFunction = useCallback((): void => {
-    setOpen("");
+    setOpen(false);
   }, []);
 
   const Dialog: FC<Props> = useCallback(
     (props: Props): ReactElement => {
-      return <Component isOpen={isOpen} dialogName={dialogName} {...props} />;
+      return <Component isOpen={isOpen} {...props} />;
     },
-    [isOpen, dialogName],
+    [isOpen],
   );
 
   return { open, close, Dialog };

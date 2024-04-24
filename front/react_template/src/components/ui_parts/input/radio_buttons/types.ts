@@ -28,4 +28,5 @@ export type RadioButtonsProps<T extends FieldValues> = {
   vertical?: boolean;
   tile?: boolean;
   errors?: FieldError | Merge<FieldError, FieldErrorsImpl<T>> | undefined;
+  noErrorAreaFixed?: boolean;
 };

@@ -15,6 +15,7 @@ export const TextArea = <T extends FieldValues>(
     id,
     size,
     errors,
+    noErrorAreaFixed,
     label,
     requirement,
     supportText,
@@ -36,7 +37,12 @@ export const TextArea = <T extends FieldValues>(
     <div className={container.join(" ")}>
       {(label || supportText || requirement) && (
         <div>
-          <Label text={label} requirement={requirement} disabled={disabled} />
+          <Label
+            text={label}
+            requirement={requirement}
+            labelFor={id}
+            disabled={disabled}
+          />
           <SupportText disabled={disabled}>{supportText}</SupportText>
         </div>
       )}
@@ -52,7 +58,11 @@ export const TextArea = <T extends FieldValues>(
         fullWidth={fullWidth}
         fixed={fixed}
       />
-      {errors != null && <ErrorText>{errors?.message as string}</ErrorText>}
+      {noErrorAreaFixed !== true ? (
+        <ErrorText>{errors?.message as string}</ErrorText>
+      ) : (
+        errors != null && <ErrorText>{errors?.message as string}</ErrorText>
+      )}
     </div>
   );
 };

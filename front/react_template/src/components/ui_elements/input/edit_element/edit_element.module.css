@@ -37,11 +37,20 @@
     background-color: var(--color-bg-tertiary);
     border: solid var(--color-border-disabled);
   }
+
+  &.no_spin {
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      appearance: textfield;
+      appearance: none;
+    }
+  }
 }
 
 .input {
-  font: var(--text-l);
-  background-color: var(--white);
+  font: normal 16px/30px var(--base-font-family);
+  background-color: var(--color-bg-primary);
   border: solid var(--color-border-field);
   @extend %input;
 }

@@ -25,6 +25,7 @@ export type CheckBoxesProps<T extends FieldValues> = {
   size?: "s" | "m" | "l";
   register?: UseFormRegisterReturn;
   errors?: FieldError | Merge<FieldError, FieldErrorsImpl<T>> | undefined;
+  noErrorAreaFixed?: boolean;
   name: string;
   items?: CheckBoxItemProps[];
   vertical?: boolean;
