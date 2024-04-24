@@ -1,5 +1,56 @@
-@import "../../../assets/styles/extend/large_section.css";
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-04);
+}
 
-.large_section {
-  @extend %large_section;
+/* search area */
+.search_area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-01);
+}
+
+.search_main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-02);
+  padding: var(--size-f-04);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-m);
+}
+
+.search_name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-f-02) var(--size-f-03);
+}
+
+.search_country_city_lang {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--size-f-02) var(--size-f-03);
+}
+
+/* search result area */
+.search_result_area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-01);
+}
+
+.search_result_header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.search_result_main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-f-02);
+  padding: var(--size-f-04);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-m);
 }

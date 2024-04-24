@@ -11,3 +11,5 @@ CREATE TABLE person (
     country_id text NOT NULL,
     city_id integer NOT NULL
 );
+
+COMMIT;
