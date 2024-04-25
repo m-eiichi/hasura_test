@@ -18,7 +18,7 @@ export type SelectElementProps<T extends FieldValues> = {
   errors?: FieldError | Merge<FieldError, FieldErrorsImpl<T>> | undefined;
   name?: string;
   id?: string;
-  options: OptionProps[];
+  options?: OptionProps[];
   disabled?: boolean;
   defaultvalue?: string | number;
   handleChange?:
