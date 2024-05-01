@@ -218,7 +218,7 @@ export const createUrlValidate = ({ name = "", max_length = 0 }) => {
  */
 export const createSelectValidate = ({ name = "", min = 1 }) => {
   let zodobj = z.string({ required_error: setReqMessage(name) });
-  if (min > 0) zodobj = zodobj.min(min, { message: setReqMessage(name) });
+  if (min > -1) zodobj = zodobj.min(min, { message: setReqMessage(name) });
 
   return zodobj;
 };
