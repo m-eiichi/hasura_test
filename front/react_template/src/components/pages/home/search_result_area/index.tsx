@@ -1,27 +1,18 @@
 import { useMemo, type ReactElement } from "react";
-// import { useState, useMemo, type ReactElement } from "react";
 import {
   ColumnDef,
   createColumnHelper,
   useReactTable,
   getCoreRowModel,
   getSortedRowModel,
-  // Updater,
-  // RowSelectionState,
 } from "@tanstack/react-table";
 import useSWR from "swr";
 import { fetcher } from "@/utils/swr_fetchers";
-// import { Headline } from "@/components/ui_elements/headline";
+
 import { TableRT } from "@/components/ui_parts/table/table_rt";
-// import { Button } from "@/components/ui_elements/button";
-// import { DialogPortal } from "@/components/ui_parts/dialog/dialog_portal";
-// import { useDialog } from "@/components/ui_parts/dialog/useDialog";
 
 import Styles from "./search_result_area.module.css";
 import { SearchResultAreaProps } from "./types";
-// import { VehicleInputDialog } from "../vehicle_input_dialog";
-
-// import { DialogContent } from "@/components/ui_parts/dialog/dialog_content";
 
 type DataTypes = {
   name: string;
@@ -55,13 +46,12 @@ export const SearchResultArea = (
   props: SearchResultAreaProps,
 ): ReactElement => {
   const { querySrc } = props;
-  console.log(querySrc.country);
 
   const columnHelper = createColumnHelper<DataTypes>();
 
   const columns: ColumnDef<DataTypes, any>[] = [
     columnHelper.accessor("name", {
-      header: "country",
+      header: "国名",
       id: "country",
       enableSorting: true,
       size: 400, //sizingを行っているため（display:table-flexを使用）設定が必要
@@ -132,54 +122,49 @@ export const SearchResultArea = (
   // 検索条件where句部分
 
   // country
-  const country = querySrc.country && 'code: {_eq:"' + querySrc.country + '"},';
-  console.log(country);
-  // language
-  // const lang = querySrc.lang && 'maker: {_eq:"' + querySrc.lang + '"},';
-  // console.log(lang);
-  const where = country;
-  // language;
-
-  const searchCountryQuery = ` 
-    query getCoutryQuery{
-      country(where:{${where}}) {
-        name
-        capital
-        surfacearea
-        region
-        population
-        localname
-        lifeexpectancy
-        indepyear
-        headofstate
-        governmentform
-        gnpold
-        gnp
-      }
-    }
-  `;
-  // const searchLangQuery = `
-  //   query getCoutryByLangQuery{
-  //     countrylanguages(where: {language: {_eq: "English"}}) {
-  //       country {
-  //         name
-  //         capital
-  //         surfacearea
-  //         region
-  //         population
-  //         localname
-  //         lifeexpectancy
-  //         indepyear
-  //         headofstate
-  //         governmentform
-  //         gnpold
-  //         gnp
-  //       }
-  //     }
-  //   }
-  // `;
-
-  const { data } = useSWR<FetchDataTypes>(searchCountryQuery, fetcher);
+  const lang =
+    querySrc.lang !== ""
+      ? 'countrylanguages: {language: {_eq: "' + querySrc.lang + '"}}'
+      : "";
+  console.log(lang);
+  const searchLangQuery =
+    lang !== ""
+      ? `
+        query getCoutryByLangQuery{
+          country (where: {${lang}}) {
+            name
+            capital
+            surfacearea
+            region
+            population
+            localname
+            lifeexpectancy
+            indepyear
+            headofstate
+            governmentform
+            gnpold
+            gnp
+          }
+        }
+      `
+      : `
+      query getCoutryByLangQuery{
+        country {
+          name
+          capital
+          surfacearea
+          region
+          population
+          localname
+          lifeexpectancy
+          indepyear
+          headofstate
+          governmentform
+          gnpold
+          gnp
+        }
+      }`;
+  const { data } = useSWR<FetchDataTypes>(searchLangQuery, fetcher);
   // dataのメモ化
   const replaceData: any[] = useMemo(
     () => (data?.country ? data.country : []),
@@ -197,16 +182,7 @@ export const SearchResultArea = (
 
   return (
     <section className={Styles.search_result_area}>
-      {/* <div className={Styles.search_result_header}>
-        <Headline size="xs" color="primary" marginNone>
-          検索結果
-        </Headline>
-        <Button color="tertiary">新規登録</Button>
-      </div> */}
-
-      <div className={Styles.search_result_main}>
-        <TableRT tableInstance={table} size="s" tableHeight="350px" />
-      </div>
+      <TableRT tableInstance={table} size="s" tableHeight="350px" />
     </section>
   );
 };

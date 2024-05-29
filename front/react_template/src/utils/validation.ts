@@ -216,7 +216,7 @@ export const createUrlValidate = ({ name = "", max_length = 0 }) => {
  * @param min 最小値(0で制御なし) 初期値=1
  * @returns validation
  */
-export const createSelectValidate = ({ name = "", min = 1 }) => {
+export const createSelectValidate = ({ name = "", min = 0 }) => {
   let zodobj = z.string({ required_error: setReqMessage(name) });
   if (min > -1) zodobj = zodobj.min(min, { message: setReqMessage(name) });
 

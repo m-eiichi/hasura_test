@@ -5,23 +5,19 @@ import { SearchResultArea } from "./search_result_area";
 import Styles from "./home.module.css";
 
 export const Home = (): ReactElement => {
-  const [querySrc, setQuerySrc] = useState({ country: "", lang: "" });
+  const [querySrc, setQuerySrc] = useState({ lang: "" });
   const handleRequirementsChange = (data: any) => {
     setQuerySrc(data);
   };
   return (
-    <section className={Styles.content}>
-      <div className={Styles.headline_wrap}>
-        <Headline size="xl" marginNone as="h1">
-          Hasura test
-        </Headline>
-      </div>
-      <div className={Styles.search_area_wrap}>
+    <>
+      <Headline size="xl" as="h1">
+        Hasura test
+      </Headline>
+      <section className={Styles.main_content}>
         <SearchArea handleRequirementsChange={handleRequirementsChange} />
-      </div>
-      <div className={Styles.search_area_wrap}>
         <SearchResultArea querySrc={querySrc} />
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

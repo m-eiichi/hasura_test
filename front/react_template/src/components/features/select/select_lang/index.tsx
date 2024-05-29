@@ -36,7 +36,7 @@ export const SelectLang = <T extends FieldValues>(
       value: lang.language,
     };
   });
-  lang_option.unshift({ text: "--", value: "" });
+  lang_option.unshift({ text: "言語", value: "" });
   return (
     <Select
       name="lang"

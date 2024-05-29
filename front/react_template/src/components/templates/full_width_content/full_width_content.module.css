@@ -1,0 +1,5 @@
+.full_width_content {
+  padding: var(--size-f-03);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-m);
+}
