@@ -31,12 +31,3 @@ vscodeプラグイン
 
 # Author
 - hiroshi muramatsu
-
-# License
-
-
-
-
-
-github設定参照サイト
-https://optigressor.com/dev/wsl2-docker-vscode-github-environment/
